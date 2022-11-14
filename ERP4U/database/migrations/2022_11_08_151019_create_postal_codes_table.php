@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('postal_codes', function (Blueprint $table) {
+        Schema::create('PostalCode', function (Blueprint $table) {
             $table->id();
             $table->string('postalCode') ->unique();
             $table->string('location');
             $table->tinyInteger('status')->default('1');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('postal_codes');
+        Schema::dropIfExists('PostalCode');
     }
 };

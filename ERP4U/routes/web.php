@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Actl\PostalCodeController;
 
 
 Route::get('/', function () {
@@ -25,21 +26,16 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
-    Route::controller(PostalCode::Class)->group(function(){
-        Route::get('/postalCode/all','PostalCodeAll')->name('postalCode.all');
-    });
+   
 });
 
-
- 
-
-
-
-
+Route::controller(PostalCodeController::class)->group(function(){
+    Route::get('/postalCode/all','PostalCodeAll')->name('postalCode.all');
+});
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
