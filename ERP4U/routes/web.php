@@ -5,7 +5,6 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Actl\PostalCodeController;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -26,16 +25,26 @@ Route::controller(AdminController::class)->group(function () {
 
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
-   
+
 });
 
+// Postal codes
 Route::controller(PostalCodeController::class)->group(function(){
     Route::get('/postalCode/all','PostalCodeAll')->name('postalCode.all');
+    Route::get('/postalCode/add','PostalCodeAdd')->name('postalCode.add');
+    Route::post('/postalCode/store','PostalCodeStore')->name('postalCode.store');
+    Route::get('/postalCode/edit/{id}','PostalCodeEdit')->name('postalCode.edit');
+    Route::post('/postalCode/update/{id}','PostalCodeUpdate')->name('postalCode.update');
 });
+ 
+
+
+
+
 
 Route::get('/dashboard', function () {
     return view('admin.index');
-})->middleware(['auth','verified'])->name('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
