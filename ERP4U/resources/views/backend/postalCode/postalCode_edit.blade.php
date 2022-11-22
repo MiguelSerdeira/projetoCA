@@ -12,7 +12,7 @@
 
             <h4 class="card-title">Edir Postal Code </h4><br><br>
             
-            <form method="post" action="" id="myForm" >
+            <form method="post" action="{{route('postalCode.update')}}" id="myForm" >
                 @csrf
 
                 <input type="hidden" name="id" value="{{$postalCode->id}}">

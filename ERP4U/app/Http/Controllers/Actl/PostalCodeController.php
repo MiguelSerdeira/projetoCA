@@ -40,7 +40,7 @@ class PostalCodeController extends Controller
         return view('backend.postalCode.postalCode_edit', compact('postalCode'));
     }
 
-    public function PostalCodeUpdate($request){
+    public function PostalCodeUpdate(Request $request){
        $postalCode_id = $request->id;
        PostalCode::findOrFail($postalCode_id)->update([
         'postalCode' => $request->postalCode,
