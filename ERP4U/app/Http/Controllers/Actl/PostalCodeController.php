@@ -57,4 +57,14 @@ class PostalCodeController extends Controller
 
       return redirect()->route('postalCode.all')->with($notification);
     }
+
+    public function PostalCodeDelete($id){
+
+      PostalCode::findOrFail($id)->delete();
+      $notification = array(
+          'message' => 'Postal Code Deleted Successfuly.',
+          'alert-type' => 'success'
+      );
+        return redirect()->back()->with($notification);
+    }
 }

@@ -35,6 +35,7 @@ Route::controller(PostalCodeController::class)->group(function(){
     Route::post('/postalCode/store','PostalCodeStore')->name('postalCode.store');
     Route::get('/postalCode/edit/{id}','PostalCodeEdit')->name('postalCode.edit');
     Route::post('/postalCode/update}','PostalCodeUpdate')->name('postalCode.update');
+    Route::get('/postalCode/delete/{id}','PostalCodeDelete')->name('postalCode.delete');
 });
  
 
