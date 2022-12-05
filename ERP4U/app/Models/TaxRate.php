@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TaxRate extends Model
 {
     use HasFactory;
-    protected $table = "UnitMeasure";
+    protected $table = "TaxRate";
     protected $guarded = [];
 }
