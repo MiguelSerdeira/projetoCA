@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\TaxRate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Actl\PostalCodeController;
+use App\Http\Controllers\Actl\TaxRateController;
+use App\Http\Controllers\Actl\UnitMeasureController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +42,12 @@ Route::controller(PostalCodeController::class)->group(function(){
     Route::get('/postalCode/delete/{id}','PostalCodeDelete')->name('postalCode.delete');
 });
 
+Route::controller(TaxRateController::class)->group(function(){
+    Route::get('/taxRate/all','taxRateAll')->name('taxRate.all');
+});
+Route::controller(UnitMeasureController::class)->group(function(){
+    Route::get('/unitMeasure/all','unitMeasureAll')->name('unitMeasure.all');
+});
 
 
 Route::get('/dashboard', function () {

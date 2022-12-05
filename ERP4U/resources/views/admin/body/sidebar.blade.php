@@ -29,8 +29,8 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="series.html">Series</a></li>
-                        <li><a href="taxrates.html">Tax Rates</a></li>
-                        <li><a href="units.html">Units</a></li>
+                        <li><a href="{{ route('taxRate.all')}}">Tax Rates</a></li>
+                        <li><a href="{{ route('unitMeasure.all')}}">Units</a></li>
                         <li><a href="{{ route('postalCode.all') }}">Postal Codes</a></li>
                     </ul>
                 </li>
