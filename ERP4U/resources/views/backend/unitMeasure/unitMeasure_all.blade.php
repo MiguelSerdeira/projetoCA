@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Unit Measure</h4>
+                    <h4 class="mb-sm-0">Postal Codes All</h4>
                 </div>
             </div>
         </div>
@@ -17,27 +17,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <a href ="" class="btn btn-secondary btn-rounded waves-effect waves-light"
-                        style="float:right;">Unit Measure</a> <br> <br>
-                        <h4 class="card-title">Unit Measure</h4>
+                        <a href ="{{ route('postalCode.add')}}" class="btn btn-secondary btn-rounded waves-effect waves-light"
+                        style="float:right;"> Add Unit measures </a> <br> <br>
+                        <h4 class="card-title">Units</h4>
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>teste</th>
-                                    <th>Postal Code</th> 
-                                    <th>Location</th> 
-                                    <th>Action</th>  
+                                    <th>Ln</th>
+                                    <th>Unit</th> 
                                 </tr>
                             </thead>
                             <tbody> 
-                        	  
+                        	   @foreach($unitMeasure as $key => $item)
                                     <tr>
-                                       
+                                        <td> {{ $key+1}} </td>
+                                        <td> {{ $item->unit }} </td> 
                                         <td>
                                             <a href="" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
                                             <a href="" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

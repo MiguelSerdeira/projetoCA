@@ -19,25 +19,29 @@
                     <div class="card-body">
                         <a href ="" class="btn btn-secondary btn-rounded waves-effect waves-light"
                         style="float:right;"> Add Tax Rates </a> <br> <br>
-                        <h4 class="card-title">Tax Rates all data </h4>
+                        <h4 class="card-title">Tax rates</h4>
                         <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>teste</th>
-                                    <th>Postal Code</th> 
-                                    <th>Location</th> 
-                                    <th>Action</th>  
+                                    <th>Ln</th>
+                                    <th>Tax Rate Code</th> 
+                                    <th>Description</th> 
+                                    <th>Tax rate</th> 
                                 </tr>
                             </thead>
                             <tbody> 
-                        	  
+                        	   @foreach($taxRate as $key => $item)
                                     <tr>
-                                       
+                                        <td> {{ $key+1}} </td>
+                                        <td> {{ $item->TaxRateCode }} </td> 
+                                        <td> {{ $item->Description }} </td> 
+                                        <td> {{ $item->TaxRate }} </td> 
                                         <td>
                                             <a href="" class="btn btn-info sm" title="Edit Data">  <i class="fas fa-edit"></i> </a>
                                             <a href="" class="btn btn-danger sm" title="Delete Data" id="delete">  <i class="fas fa-trash-alt"></i> </a>
                                         </td>
                                     </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
