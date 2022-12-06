@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\TaxRate;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
@@ -44,9 +43,20 @@ Route::controller(PostalCodeController::class)->group(function(){
 
 Route::controller(TaxRateController::class)->group(function(){
     Route::get('/taxRate/all','taxRateAll')->name('taxRate.all');
+    Route::get('/taxRate/add','taxRateAdd')->name('taxRate.add');
+    Route::post('/taxRate/store','taxRateStore')->name('taxRate.store');
+    Route::get('/taxRate/edit/{id}','taxRateEdit')->name('taxRate.edit');
+    Route::post('/taxRate/update}','taxRateUpdate')->name('taxRate.update');
+    Route::get('/taxRate/delete/{id}','TaxRateDelete')->name('taxRate.delete');
+
 });
 Route::controller(UnitMeasureController::class)->group(function(){
     Route::get('/unitMeasure/all','unitMeasureAll')->name('unitMeasure.all');
+    Route::get('/unitMeasure/add','unitMeasureAdd')->name('unitMeasure.add');
+    Route::post('/unitMeasure/store','unitMeasureStore')->name('unitMeasure.store');
+    Route::get('/unitMeasure/edit/{id}','unitMeasureEdit')->name('unitMeasure.edit');
+    Route::post('/unitMeasure/update}','unitMeasureUpdate')->name('unitMeasure.update');
+    Route::get('/unitMeasure/delete/{id}','unitMeasureDelete')->name('unitMeasure.delete');
 });
 
 

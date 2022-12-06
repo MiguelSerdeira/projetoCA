@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('TaxRate', function (Blueprint $table) {
             $table->id();
+            
             $table->integer('TaxRateCode') ->unique();
             $table->string('DescriptionTaxRate');
             $table->double('TaxRate');
