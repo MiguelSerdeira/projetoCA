@@ -10,42 +10,43 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Edit Postal Code </h4><br><br>
+                        <h4 class="card-title">Add Supplier </h4><br><br>
 
-                        <form method="post" action="{{route('taxRate.update')}}" id="myForm">
+                        <form method="post" action="{{ route('supplier.store') }}" id="myForm">
                             @csrf
 
-                            <input type="hidden" name="id" value="{{$taxRate->id}}">
-
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Tax Rate Code</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Code</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="TaxRateCode" class="form-control" value="{{$taxRate->TaxRateCode}}"
-                                        type="text">
+                                    <input name="code" class="form-control" type="text">
                                 </div>
                             </div>
-                            <!-- end row -->
-
-
+                            
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="DescriptionTaxRate" class="form-control"
-                                        value="{{$taxRate->DescriptionTaxRate}}" type="text">
+                                    <input name="name" class="form-control" type="text">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
-                                <label for="example-text-input" class="col-sm-2 col-form-label">Tax Rate</label>
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Town</label>
                                 <div class="form-group col-sm-10">
-                                    <input name="TaxRate" class="form-control" value="{{$taxRate->TaxRate}}"
-                                        type="text">
+                                    <input name="town" class="form-control" type="text">
                                 </div>
                             </div>
-                            <!-- end row -->
 
-                            <input type="submit" class="btn btn-info waves-effect waves-light" value="Edit Postal Code">
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Postal Code</label>
+                                <div class="form-group col-sm-10">
+                                    <input name="postalCode" class="form-control" type="text">
+                                </div>
+                            </div>
+
+                            <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Supplier">
                         </form>
+
+
 
                     </div>
                 </div>
@@ -57,37 +58,42 @@
     </div>
 </div>
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('#myForm').validate({
             rules: {
-                TaxRateCode: {
+                code: {
                     required: true,
                 },
-                Description: {
+                name: {
                     required: true,
                 },
-                TaxRate: {
+                town: {
+                    required: true,
+                },
+                postalCode: {
                     required: true,
                 },
             },
             messages: {
-                TaxRateCode: {
-                    required: 'Please enter a Tax Rate Code.',
+                code: {
+                    required: 'Please enter a code',
                 },
-                Description: {
-                    required: 'Please enter a Description.',
+                name: {
+                    required: 'Please enter a name',
                 },
-                TaxRate: {
-                    required: 'Please enter a Tax Rate.',
+                town: {
+                    required: 'Please enter a town',
+                },
+                postalCode: {
+                    required: 'Please enter a postal Code',
                 },
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
-            },
+            },  
             highlight: function (element, errorClass, validClass) {
                 $(element).addClass('is-invalid');
             },
@@ -97,4 +103,5 @@
         });
     }); 
 </script>
+
 @endsection

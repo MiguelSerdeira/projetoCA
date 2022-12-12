@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Actl\PostalCodeController;
 use App\Http\Controllers\Actl\TaxRateController;
 use App\Http\Controllers\Actl\UnitMeasureController;
+use App\Http\Controllers\Actl\SupplierController;
 
 
 Route::get('/', function () {
@@ -57,6 +58,15 @@ Route::controller(UnitMeasureController::class)->group(function(){
     Route::get('/unitMeasure/edit/{id}','unitMeasureEdit')->name('unitMeasure.edit');
     Route::post('/unitMeasure/update}','unitMeasureUpdate')->name('unitMeasure.update');
     Route::get('/unitMeasure/delete/{id}','unitMeasureDelete')->name('unitMeasure.delete');
+});
+
+Route::controller(SupplierController::class)->group(function(){
+    Route::get('/supplier/all','supplierAll')->name('supplier.all');
+    Route::get('/supplier/add','supplierAdd')->name('supplier.add');
+    Route::post('/supplier/store','supplierStore')->name('supplier.store');
+    Route::get('/supplier/edit/{id}','supplierEdit')->name('supplier.edit');
+    Route::post('/supplier/update}','supplierUpdate')->name('supplier.update');
+    Route::get('/supplier/delete/{id}','supplierDelete')->name('supplier.delete');
 });
 
 

@@ -37,6 +37,18 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-table-2"></i>
+                        <span>Business Partners</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('supplier.all')}}">Suppliers</a></li>
+                        <li><a href="customers.html">Customers</a></li>
+                        <li><a href="leads.html">Leads</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-file-text-line"></i>
                         <span>Documents</span>
                     </a>

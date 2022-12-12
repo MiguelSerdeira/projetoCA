@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Edir Postal Code </h4><br><br>
+                        <h4 class="card-title">Edit Postal Code </h4><br><br>
 
                         <form method="post" action="{{route('unitMeasure.update')}}" id="myForm">
                             @csrf

@@ -10,17 +10,17 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">Edit Postal Code </h4><br><br>
+            <h4 class="card-title">Edit Supplier </h4><br><br>
             
-            <form method="post" action="{{route('postalCode.update')}}" id="myForm" >
+            <form method="post" action="{{route('supplier.update')}}" id="myForm" >
                 @csrf
 
-                <input type="hidden" name="id" value="{{$postalCode->id}}">
+                <input type="hidden" name="id" value="{{$supplier->id}}">
 
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Postal Code</label>
                 <div class="form-group col-sm-10">
-                    <input name="postalCode" class="form-control" value="{{$postalCode->postalCode}}" type="text">
+                    <input name="postalCode" class="form-control" value="{{$supplier->postalCode}}" type="text">
                 </div>
             </div>
             <!-- end row -->
@@ -29,7 +29,7 @@
              <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Location</label>
                 <div class="form-group col-sm-10">
-                <input name="location" class="form-control" value="{{$postalCode->location}}"type="text">
+                <input name="location" class="form-control" value="{{$supplier->location}}"type="text">
                 </div>
             </div>
             <!-- end row -->
