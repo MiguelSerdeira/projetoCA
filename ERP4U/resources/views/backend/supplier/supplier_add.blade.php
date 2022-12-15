@@ -21,7 +21,15 @@
                                     <input name="code" class="form-control" type="text">
                                 </div>
                             </div>
-                            
+
+
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">NIF</label>
+                                <div class="form-group col-sm-10">
+                                    <input name="nif" class="form-control" type="text">
+                                </div>
+                            </div>
+
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
                                 <div class="form-group col-sm-10">
@@ -38,15 +46,22 @@
 
                             <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Postal Code</label>
-                                <div class="form-group col-sm-10">
-                                    <input name="postalCode" class="form-control" type="text">
+                                <div class="form-group col-sm-2">
+                                    <select name="postalCode" id="codePostal" class="form-select select2" aria-label="Default select example">
+                                        <option selected=""></option>
+                                        @foreach($postalCode as $supp)
+                                        <option iLocation="{{$supp->location}}" value="{{$supp->postalCode}}">
+                                            {{$supp->postalCode}} </option>
+                                        @endforeach
+
+                                    </select>
                                 </div>
+                                <label for="example-text-input" id="lbLocation" name="lblocation" class="col-sm-8 col-form-label"></label>
                             </div>
+
 
                             <input type="submit" class="btn btn-info waves-effect waves-light" value="Add Supplier">
                         </form>
-
-
 
                     </div>
                 </div>
@@ -60,6 +75,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#codePostal").change(function () {
+            $("#lbLocation").text("");
+            $("#lbLocation").text($("#codePostal option:selected").attr("iLocation"));
+        });
         $('#myForm').validate({
             rules: {
                 code: {
@@ -93,7 +112,7 @@
             errorPlacement: function (error, element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
-            },  
+            },
             highlight: function (element, errorClass, validClass) {
                 $(element).addClass('is-invalid');
             },

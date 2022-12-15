@@ -5,69 +5,83 @@ namespace App\Http\Controllers\Actl;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use App\Models\PostalCode;
+
 use Auth;
 use Illuminate\Support\Carbon;
 
 
 class SupplierController extends Controller
 {
-    public function SupplierAll()
-    {
-        $supplier = Supplier::latest()->get();
-        return view('backend.supplier.supplier_all', compact('supplier'));
-    }
-    public function SupplierAdd(){
-        return view('backend.supplier.supplier_add');
-    }
+  public function SupplierAll()
+  {
+    $supplier = Supplier::latest()->get();
+    return view('backend.supplier.supplier_all', compact('supplier'));
+  }
+  public function SupplierAdd()
+  {
+    $postalCode = PostalCode::all();
+    return view('backend.supplier.supplier_add', compact('postalCode'));
+  }
 
-    public function SupplierStore(Request $request){
-      Supplier::insert([
-        'code' => $request-> code,
-        'name' => $request-> name,
-        'postalCode' => $request-> postalCode,
-        'town' => $request-> town,
-        'created_by' => Auth::user()->id,
-        'created_at' => Carbon::now(),
-      ]);
+  public function SupplierStore(Request $request)
+  {
+    Supplier::insert([
+      'code' => $request->code,
+      'name' => $request->name,
+      'postalCode' => $request->postalCode,
+      'nif' => $request->nif,
+      'town' => $request->town,
+      'created_by' => Auth::user()->id,
+      'created_at' => Carbon::now(),
+    ]);
 
-      $notification = array (
-        'message' => 'Supplier Successfully Inserted.',
-        'alert-type' => 'success'
-      );
+    $notification = array(
+      'message' => 'Supplier Successfully Inserted.',
+      'alert-type' => 'success'
+    );
 
-      return redirect()->route('postalCode.all')->with($notification);
-    }
+    return redirect()->route('supplier.all')->with($notification);
+  }
 
-    public function PostalCodeEdit($id){
-        $postalCode = PostalCode::findOrFail($id);
-        return view('backend.postalCode.postalCode_edit', compact('postalCode'));
-    }
+  public function SupplierEdit($id)
+  {
+    $postalCode = PostalCode::all();
+    $supplier = Supplier::findOrFail($id);
+    
+    return view('backend.supplier.supplier_edit', compact('postalCode', 'supplier'));
+  }
 
-    public function PostalCodeUpdate(Request $request){
-       $postalCode_id = $request->id;
-       PostalCode::findOrFail($postalCode_id)->update([
-        'postalCode' => $request->postalCode,
-        'location' => $request->location,
-        'updated_by' => Auth::user()->id,
-        'updated_at' => Carbon::now()
-       ]);
+  public function SupplierUpdate(Request $request)
+  {
+    $supplier_id = $request->id;
+    Supplier::findOrFail($supplier_id)->update([
+      'code' => $request->code,
+      'name' => $request->name,
+      'postalCode' => $request->postalCode,
+      'nif' => $request->nif,
+      'town' => $request->town,
+      'created_by' => Auth::user()->id,
+      'created_at' => Carbon::now(),
+    ]);
 
 
-      $notification = array (
-        'message' => 'Postal Code Successfully Updated.',
-        'alert-type' => 'success'
-      );
+    $notification = array(
+      'message' => 'Supplier Successfully Updated.',
+      'alert-type' => 'success'
+    );
 
-      return redirect()->route('postalCode.all')->with($notification);
-    }
+    return redirect()->route('supplier.all')->with($notification);
+  }
 
-    public function PostalCodeDelete($id){
+  public function SupplierDelete($id)
+  {
 
-      PostalCode::findOrFail($id)->delete();
-      $notification = array(
-          'message' => 'Postal Code Deleted Successfuly.',
-          'alert-type' => 'success'
-      );
-        return redirect()->back()->with($notification);
-    }
+    Supplier::findOrFail($id)->delete();
+    $notification = array(
+      'message' => 'Supplier Deleted Successfuly.',
+      'alert-type' => 'success'
+    );
+    return redirect()->back()->with($notification);
+  }
 }

@@ -40,7 +40,7 @@
                                         <td> {{ $key+1}} </td>
                                         <td> {{ $item->code }} </td> 
                                         <td> {{ $item->name }} </td> 
-                                        <td>nif</td> 
+                                        <td> {{ $item->nif }}</td> 
                                         <td> {{ $item->postalCode}} </td> 
                                         <td> {{ $item['postalCodeLink']['location'] }} </td> 
                                         <td> {{ $item->town }} </td> 
